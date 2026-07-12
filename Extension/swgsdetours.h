@@ -21,6 +21,12 @@
 #include "steam_gameserver.h"
 #include "CDetour/detours.h"
 
+/* SourceMod's safetyhook-based CDetour doesn't ship the "fixed address" helper the
+   old vendored copy had, so define it in terms of the address overload it does expose. */
+#ifndef DETOUR_CREATE_STATIC_FIXED
+#define DETOUR_CREATE_STATIC_FIXED(name, address) CDetourManager::CreateDetour(GET_STATIC_CALLBACK(name), GET_STATIC_TRAMPOLINE(name), address);
+#endif
+
 class SteamWorksGSDetours
 {
 	public:

@@ -192,15 +192,9 @@ static cell_t sm_ClearRules(IPluginContext *pContext, const cell_t *params)
 
 static cell_t sm_ForceHeartbeat(IPluginContext *pContext, const cell_t *params)
 {
-	ISteamGameServer *pServer = GetGSPointer();
-
-	if (pServer == NULL)
-	{
-		return 0;
-	}
-
-	pServer->ForceHeartbeat();
-	return 1;
+	/* Deprecated no-op: newer Steamworks SDKs removed ISteamGameServer::ForceHeartbeat();
+	   server list heartbeats are now sent implicitly by Steam. */
+	return 0;
 }
 
 static cell_t sm_UserHasLicenseForApp(IPluginContext *pContext, const cell_t *params)

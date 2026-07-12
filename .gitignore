@@ -26,3 +26,7 @@
 [Rr]elease - */
 [Dd]ebug/
 [Rr]elease/
+
+# ambuild output directories
+/build/
+/build-*/
